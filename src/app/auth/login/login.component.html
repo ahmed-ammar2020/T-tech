@@ -1,0 +1,45 @@
+<div class="login-container">
+  <div class="hint">
+    <div class="user-hint">
+      <strong>Administrator</strong>
+      - (Username: userA) (Password: userA)
+    </div>
+    <div class="user-hint">
+      <strong>Editor User</strong>
+      - (Username: userB) (Password: userB)
+    </div>
+    <div class="user-hint">
+      <strong>Normal User</strong>
+      - (Username: userC) (Password: userC)
+    </div>
+  </div>
+
+  <form action="" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+    <app-input
+      [control]="loginForm.controls.username"
+      label="Username"
+    ></app-input>
+    <div class="mt-3"></div>
+    <app-input
+      [control]="loginForm.controls.password"
+      label="Password"
+      inputType="password"
+    ></app-input>
+    <p *ngIf="loginForm.errors?.invalidUsernameOPass" class="invalid-message">
+      Invalid username or password, Please look at the hints section 😏😒
+    </p>
+    <button
+      type="submit"
+      class="btn btn-primary mt-3"
+      [disabled]="loginForm.invalid"
+    >
+      Login
+    </button>
+  </form>
+</div>
+
+<!-- for debugging -->
+<!--
+<div>form value: {{ loginForm.value | json }}</div>
+<div>is form Valid: {{ loginForm.valid }}</div>
+<div>form errors: {{ loginForm.errors | json }}</div> -->

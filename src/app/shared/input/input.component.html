@@ -1,0 +1,13 @@
+<label class="form-label">{{ label }}</label>
+<input
+  class="form-control"
+  [type]="inputType"
+  [formControl]="control"
+  [ngClass]="{ 'is-invalid': showErrors() }"
+/>
+
+<ng-container *ngIf="showErrors()">
+  <p *ngIf="control.errors.required" class="invalid-feedback">
+    this field is required
+  </p>
+</ng-container>
